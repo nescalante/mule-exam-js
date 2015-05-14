@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Mule exam",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
     "test": "jshint . --reporter node_modules/jshint-stylish/stylish.js && mocha"
   },

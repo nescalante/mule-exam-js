@@ -24,22 +24,12 @@ describe('Phases', function () {
     command('move 7 onto 5');
     command('move 4 onto 5');
 
-    assert.equal(result[0].currentPosition, 0);
-    assert.equal(result[0].z, 0);
-    assert.equal(result[1].currentPosition, 1);
-    assert.equal(result[1].z, 0);
-    assert.equal(result[2].currentPosition, 2);
-    assert.equal(result[2].z, 0);
-    assert.equal(result[3].currentPosition, 3);
-    assert.equal(result[3].z, 0);
-    assert.equal(result[4].currentPosition, 2);
-    assert.equal(result[4].z, 2);
-    assert.equal(result[5].currentPosition, 2);
-    assert.equal(result[5].z, 1);
-    assert.equal(result[6].currentPosition, 6);
-    assert.equal(result[6].z, 0);
-    assert.equal(result[7].currentPosition, 7);
-    assert.equal(result[7].z, 0);
+    assertBlocks(result, {
+      0: [0],
+      1: [1],
+      2: [2, 5, 4],
+      3: [3]
+    });
   });
 
   it('tests second phase', function () {
@@ -51,18 +41,12 @@ describe('Phases', function () {
     command('move 5 over 0');
     command('move 4 over 0');
 
-    assert.equal(result[0].currentPosition, 0);
-    assert.equal(result[0].z, 0);
-    assert.equal(result[1].currentPosition, 1);
-    assert.equal(result[1].z, 0);
-    assert.equal(result[2].currentPosition, 2);
-    assert.equal(result[2].z, 0);
-    assert.equal(result[3].currentPosition, 3);
-    assert.equal(result[3].z, 0);
-    assert.equal(result[4].currentPosition, 0);
-    assert.equal(result[4].z, 2);
-    assert.equal(result[5].currentPosition, 0);
-    assert.equal(result[5].z, 1);
+    assertBlocks(result, {
+      0: [0, 5, 4],
+      1: [1],
+      2: [2],
+      3: [3]
+    });
   });
 
   it('tests third phase', function () {
@@ -77,26 +61,14 @@ describe('Phases', function () {
     command('move 4 over 9');
     command('pile 8 onto 9');
 
-    assert.equal(result[0].currentPosition, 0);
-    assert.equal(result[0].z, 0);
-    assert.equal(result[1].currentPosition, 1);
-    assert.equal(result[1].z, 0);
-    assert.equal(result[2].currentPosition, 2);
-    assert.equal(result[2].z, 0);
-    assert.equal(result[3].currentPosition, 3);
-    assert.equal(result[3].z, 0);
-    assert.equal(result[4].currentPosition, 4);
-    assert.equal(result[4].z, 0);
-    assert.equal(result[5].currentPosition, 5);
-    assert.equal(result[5].z, 0);
-    assert.equal(result[6].currentPosition, 1);
-    assert.equal(result[6].z, 4);
-    assert.equal(result[7].currentPosition, 1);
-    assert.equal(result[7].z, 3);
-    assert.equal(result[8].currentPosition, 1);
-    assert.equal(result[8].z, 2);
-    assert.equal(result[9].currentPosition, 1);
-    assert.equal(result[9].z, 1);
+    assertBlocks(result, {
+      0: [0],
+      1: [1, 9, 8, 7, 6],
+      2: [2],
+      3: [3],
+      4: [4],
+      5: [5]
+    });
   });
 
   it('tests fourth phase', function () {
@@ -110,26 +82,12 @@ describe('Phases', function () {
     command('move 2 over 1');
     command('move 4 over 9');
 
-    assert.equal(result[0].currentPosition, 0);
-    assert.equal(result[0].z, 0);
-    assert.equal(result[1].currentPosition, 1);
-    assert.equal(result[1].z, 0);
-    assert.equal(result[2].currentPosition, 1);
-    assert.equal(result[2].z, 2);
-    assert.equal(result[3].currentPosition, 3);
-    assert.equal(result[3].z, 0);
-    assert.equal(result[4].currentPosition, 1);
-    assert.equal(result[4].z, 3);
-    assert.equal(result[5].currentPosition, 5);
-    assert.equal(result[5].z, 0);
-    assert.equal(result[6].currentPosition, 5);
-    assert.equal(result[6].z, 3);
-    assert.equal(result[7].currentPosition, 5);
-    assert.equal(result[7].z, 2);
-    assert.equal(result[8].currentPosition, 5);
-    assert.equal(result[8].z, 1);
-    assert.equal(result[9].currentPosition, 1);
-    assert.equal(result[9].z, 1);
+    assertBlocks(result, {
+      0: [0],
+      1: [1, 9, 2, 4],
+      3: [3],
+      5: [5, 8, 7, 6]
+    });
   });
 
   function validatePositions(blocks) {
@@ -137,5 +95,14 @@ describe('Phases', function () {
     for (; i < blocks.length; i++) {
       assert.equal(blocks[i].initialPosition, i);
     }
+  }
+
+  function assertBlocks(blocks, output) {
+    Object.keys(output).forEach(function (line) {
+      output[line].forEach(function (number, index) {
+        assert.equal(blocks[number].currentPosition, +line);
+        assert.equal(blocks[number].z, index);
+      });
+    });
   }
 });

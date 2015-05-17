@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "description": "Mule exam",
-  "main": "src/main.js",
+  "main": "src/command/index.js",
   "scripts": {
-    "test": "jshint . --reporter node_modules/jshint-stylish/stylish.js && mocha"
+    "test": "jshint . --reporter node_modules/jshint-stylish/stylish.js && istanbul cover node_modules/.bin/_mocha",
+    "start": "node src/main.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/nescalante/mule-exam-js",
   "devDependencies": {
+    "istanbul": "^0.3.14",
     "jshint": "^2.7.0",
     "jshint-stylish": "~1.0.0",
     "mocha": "^2.2.4"

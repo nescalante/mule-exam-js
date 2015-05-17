@@ -14,7 +14,6 @@ function getOutput(blocks) {
     appendLine(i);
   }
 
-  blocks.splice(0, blocks.length);
   return output;
 
   function appendLine(index) {

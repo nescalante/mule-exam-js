@@ -20,7 +20,3 @@ process.stdin.on('readable', function() {
     }
   }
 });
-
-process.stdin.on('end', function() {
-  process.stdout.write('end');
-});

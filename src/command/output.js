@@ -6,10 +6,6 @@ function getOutput(blocks) {
   var i = 0;
   var output = [];
 
-  if (!blocks) {
-    return;
-  }
-
   for (; i < blocks.length; i++) {
     appendLine(i);
   }

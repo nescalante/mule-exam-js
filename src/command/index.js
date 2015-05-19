@@ -31,11 +31,11 @@ module.exports = function (options) {
       blocks = define(+result[1]);
     }
     else if (quit.test(command)) {
-      output = getOutput(blocks);
+      output = blocks ? getOutput(blocks).join('\n') : '';
       blocks = undefined;
 
       if (options.cli) {
-        process.stdout.write(output.join('\n') + '\n');
+        process.stdout.write(output);
         process.stdin.end();
       }
     }

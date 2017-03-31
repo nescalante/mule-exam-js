@@ -1,6 +1,8 @@
 
 # MuleSoft Collaborative Programming Exercise - Robot Blocks World
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nescalante/mule-exam-js.svg?token=b852c8919f2719ea9745451cb3bd1d286662e468df68b457c4af2f712deec982)](https://greenkeeper.io/)
+
 ### Background 
 
 Many areas of Computer Science use simple, abstract domains for both analytical and empirical studies. For example, an early AI study of planning and robotics (STRIPS) used a block world in which a robot arm performed tasks involving the manipulation of blocks.

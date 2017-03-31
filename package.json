@@ -23,11 +23,11 @@
   },
   "homepage": "https://github.com/nescalante/mule-exam-js",
   "devDependencies": {
-    "istanbul": "^0.3.14",
+    "istanbul": "^0.4.5",
     "jshint": "^2.7.0",
-    "jshint-stylish": "~1.0.0",
-    "mocha": "^2.2.4",
+    "jshint-stylish": "~2.2.1",
+    "mocha": "^3.2.0",
     "proxyquire": "^1.4.0",
-    "sinon": "^1.14.1"
+    "sinon": "^2.1.0"
   }
 }
